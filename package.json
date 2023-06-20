@@ -4,7 +4,7 @@
   "description": "",
   "main": "mathFunction.js",
   "scripts": {
-    "test": "test --watch"
+    "test": "jest --watch"
   },
   "keywords": [],
   "author": "",
