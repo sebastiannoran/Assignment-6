@@ -12,6 +12,14 @@ describe ("reverseString function should return backwards version of string", ()
     })
 })
 
-describe ("isPalindrone function should return a boolean flag to indicate true if string is a palindrone, false if not"), () => {
-    
-}
+describe ("isPalindrone function returns a flag to indicate true if string is a palindrone", () => {
+    test ("isPalindrone(bob) => true", () => {
+        expect(isPalindrone("bob")).toEqual(true);
+    })
+    test ("isPalindrone(apple) => false", () => {
+        expect(isPalindrone("apple")).toEqual(false);
+    })
+    // test ("isPalindrone(race car) => true", () => {
+    //     expect(isPalindrone("race car")).toEqual(true);
+    // })
+})

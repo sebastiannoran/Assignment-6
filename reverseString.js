@@ -8,7 +8,14 @@ let reverseString = function (str) {
 }
 
 let isPalindrone = function (str) {
+    
+    let palindroneString = reverseString(str);
 
+    if (palindroneString === str) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 module.exports = {reverseString, isPalindrone};
