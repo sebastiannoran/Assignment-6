@@ -1,34 +1,41 @@
 // create an array to represent the shopping cart
+// the difficulty in this question is returning the price of items
+// 
 
 let shoppingCart = [];
 
 
-let addToCart = function (item, quantity) {
-    let exisitingItem = shoppingCart.findIndex(cartItem => cartItem.item === item);
-    if (exisitingItem) {
-        exisitingItem.quantity += quantity;
+const addToCart = function (item, quantity) {
+  let existingItemIndex = shoppingCart.findIndex((cartItem) => cartItem.item === item);
+
+  if (existingItemIndex !== -1) {
+    shoppingCart[existingItemIndex].quantity += quantity;
+  } else {
+    shoppingCart.push({ item, quantity });
+  }
+};
+
+const removeFromCart = function (item, quantity) {
+  let existingItemIndex = shoppingCart.findIndex((cartItem) => cartItem.item === item);
+
+  if (existingItemIndex !== -1) {
+    if (quantity < shoppingCart[existingItemIndex].quantity) {
+      shoppingCart[existingItemIndex].quantity -= quantity;
     } else {
-    shoppingCart.push({item, quantity});
+      shoppingCart.splice(existingItemIndex, 1);
     }
-}
+  }
+};
 
-let removeFromCart = function (item, quantity) {
-    let exisitingItem = shoppingCart.findIndex(cartItem => cartItem.item === item);
-    if (exisitingItem) {
-        if (quantity <= exisitingItem.quantity) {
-            exisitingItem.quantity -= quantity;
-        } else {
-            shoppingCart = shoppingCart.filter(cartItem => cartItem.item === item);
-        }
-    }
-}
+const calculateTotal = function () {
+  let totalSum = 0;
 
-let calculateTotal = function () {
-    let totalSum = 0;
-    for (let i = 0; i < shoppingCart.length; i++) {
-        totalSum += shoppingCart[i].item.price * shoppingCart[i].item.quantity
-    }
-    return totalSum;
-}
+  for (let i = 0; i < shoppingCart.length; i++) {
+    const cartItem = shoppingCart[i];
+    totalSum += cartItem.item.price * cartItem.quantity;
+  }
 
-module.exports = {addToCart, removeFromCart, calculateTotal}
+  return totalSum;
+};
+
+module.exports = { addToCart, removeFromCart, calculateTotal };
